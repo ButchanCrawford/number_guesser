@@ -4,7 +4,6 @@ import math
 game_running = True
 game_restarted = True
 guessed_correctly = False
-lives = 10
 guesses = 0
 times_played = 0
 correct_guesses = 0
@@ -43,11 +42,11 @@ def validate_guess(guess, actual):
 def play_more():
     while True:       
         keep_playing = input("Do you want to play again? 'Y' or 'Yes' to continue,'Q' to Quit").upper()
-        if keep_playing == "Y" or "YES":
+        if keep_playing == "Y" or keep_playing == "YES":
             global game_running
             game_running = True
             break
-        elif keep_playing == "Q" or "Quit":
+        elif keep_playing == "Q" or keep_playing == "Quit":
             game_running = False
             break
         else:
@@ -73,6 +72,8 @@ def game():
              print("If game restarted")
              lower_limit, upper_limit = select_ranges()
              generated_number = generate_random_number(lower_limit, upper_limit)
+             game_restarted = False
+             guessed_correctly = False
 
         if guessed_correctly == False:
             print("**guessed_correctly == False**")
